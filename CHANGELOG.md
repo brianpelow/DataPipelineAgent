@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+_Last checked: 2026-04-16_
+
 ## [0.1.0] - 2026-04-12
 
 ### Added
