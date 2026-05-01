@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 class AgentConfig(BaseModel):
     """Runtime configuration for DataPipelineAgent."""
 
-    anthropic_api_key: str = Field("", description="Anthropic API key")
+    openrouter_api_key: str = Field("", description="OpenRouter API key")
     industry: str = Field("fintech", description="Industry context")
     model: str = Field("claude-sonnet-4-20250514", description="Claude model")
     null_rate_threshold: float = Field(0.05, description="Max acceptable null rate")
@@ -19,10 +19,10 @@ class AgentConfig(BaseModel):
     @classmethod
     def from_env(cls) -> "AgentConfig":
         return cls(
-            anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY", ""),
+            openrouter_api_key=os.environ.get("OPENROUTER_API_KEY", ""),
             industry=os.environ.get("DP_INDUSTRY", "fintech"),
         )
 
     @property
     def has_api_key(self) -> bool:
-        return bool(self.anthropic_api_key)
+        return bool(self.openrouter_api_key)
